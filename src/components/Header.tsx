@@ -41,9 +41,12 @@ export function Header({ anchor, view, onViewChange, onPrev, onNext, onToday }: 
           </div>
         </div>
         <div className="mt-1 flex items-end justify-between">
-          <h1 className="font-sf text-[34px] font-bold leading-tight tracking-tight text-ink">
-            {formatMonthTitle(anchor)}
-          </h1>
+          <div>
+            <p className="text-[13px] font-semibold text-coral">JK하루</p>
+            <h1 className="font-sf text-[34px] font-bold leading-tight tracking-tight text-ink">
+              {formatMonthTitle(anchor)}
+            </h1>
+          </div>
         </div>
         <div className="mt-3">
           <SegmentedControl
