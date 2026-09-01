@@ -63,7 +63,7 @@ export function Header({
         </div>
         <div className="mt-1 flex items-end justify-between">
           <div>
-            <p className="text-[13px] font-semibold text-coral">JK하루</p>
+            <p className="text-[13px] font-semibold text-coral">알차게 보내자</p>
             <h1 className="font-sf text-[34px] font-bold leading-tight tracking-tight text-ink sm:text-[40px] md:text-[44px] lg:text-[50px] xl:text-[56px]">
               {formatMonthTitle(anchor)}
             </h1>
