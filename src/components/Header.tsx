@@ -1,7 +1,7 @@
 "use client";
 
 import { formatMonthTitle } from "@/lib/dateUtils";
-import { AlarmPermission } from "@/lib/alarms";
+import { AlarmPermission } from "@/lib/alarm";
 import { SegmentedControl } from "./SegmentedControl";
 
 interface HeaderProps {
