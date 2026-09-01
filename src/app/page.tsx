@@ -10,11 +10,10 @@ import { Fab } from "@/components/Fab";
 import { AlarmToast } from "@/components/AlarmToast";
 import { useEvents } from "@/hooks/useEvents";
 import { useAlarms } from "@/hooks/useAlarms";
-import { ScheduleItem } from "@/lib/types";
+import { ScheduleItem, ViewMode } from "@/lib/types";
 import { addDays, addMonths, toDateKey } from "@/lib/dateUtils";
 import { unlockAlarmAudio } from "@/lib/alarms";
 
-type ViewMode = "month" | "week";
 
 export default function Home() {
   const { items, itemsByDate, addItem, updateItem, removeItem, toggleDone } = useEvents();
