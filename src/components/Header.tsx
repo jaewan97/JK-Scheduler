@@ -1,13 +1,13 @@
 "use client";
-
+import { Dispatch, SetStateAction } from "react";
+import { ViewMode, AlarmPermission } from "@/lib/types";
 import { formatMonthTitle } from "@/lib/dateUtils";
-import { AlarmPermission } from "@/lib/alarms";
 import { SegmentedControl } from "./SegmentedControl";
 
 interface HeaderProps {
   anchor: Date;
-  view: "month" | "week";
-  onViewChange: (v: "month" | "week") => void;
+  view: ViewMode;
+  onViewChange: Dispatch<SetStateAction<ViewMode>>;
   onPrev: () => void;
   onNext: () => void;
   onToday: () => void;
