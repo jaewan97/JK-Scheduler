@@ -22,8 +22,8 @@ export function WeekView({ anchor, selectedDate, itemsByDate, onSelectDay }: Wee
   const week = buildWeekGrid(anchor);
 
   return (
-    <div className="mx-auto w-full max-w-md px-4 pb-4 sm:max-w-xl sm:px-6 md:max-w-2xl md:px-8 lg:max-w-3xl">
-      <div className="flex flex-col gap-2 sm:gap-2.5">
+    <div className="mx-auto w-full max-w-md px-4 pb-4 sm:max-w-xl sm:px-6 md:max-w-2xl md:px-8 lg:max-w-3xl lg:px-10 xl:max-w-4xl xl:px-12">
+      <div className="flex flex-col gap-2 sm:gap-2.5 lg:gap-3">
         {week.map((day) => {
           const key = toDateKey(day);
           const dayItems = itemsByDate.get(key) ?? [];
@@ -35,29 +35,31 @@ export function WeekView({ anchor, selectedDate, itemsByDate, onSelectDay }: Wee
             <button
               key={key}
               onClick={() => onSelectDay(day)}
-              className={`flex items-start gap-3 rounded-ios px-3 py-3 text-left transition-all duration-200 ease-spring-soft sm:gap-4 sm:px-4 sm:py-4 ${
+              className={`flex items-start gap-3 rounded-ios px-3 py-3 text-left transition-all duration-200 ease-spring-soft sm:gap-4 sm:px-4 sm:py-4 lg:px-5 lg:py-5 ${
                 selected ? "bg-white shadow-card" : "bg-white/40"
               }`}
             >
-              <div className="flex w-11 shrink-0 flex-col items-center sm:w-12">
+              <div className="flex w-11 shrink-0 flex-col items-center sm:w-12 lg:w-14">
                 <span
-                  className={`text-[11px] font-semibold sm:text-[12px] ${
+                  className={`text-[11px] font-semibold sm:text-[12px] lg:text-[13px] ${
                     dow === 0 ? "text-[#FF3B30]" : dow === 6 ? "text-tag-blue" : "text-ink-soft"
                   }`}
                 >
                   {WEEKDAYS_KO[dow]}
                 </span>
                 <span
-                  className={`mt-0.5 grid h-8 w-8 place-items-center rounded-full text-[15px] font-sf sm:h-9 sm:w-9 sm:text-[16px] ${
+                  className={`mt-0.5 grid h-8 w-8 place-items-center rounded-full text-[15px] font-sf sm:h-9 sm:w-9 sm:text-[16px] lg:h-10 lg:w-10 lg:text-[18px] ${
                     today ? "bg-coral font-bold text-white animate-pulse-ring" : "text-ink"
                   }`}
                 >
                   {day.getDate()}
                 </span>
               </div>
-              <div className="flex min-w-0 flex-1 flex-col gap-1 pt-0.5 sm:gap-1.5">
+              <div className="flex min-w-0 flex-1 flex-col gap-1 pt-0.5 sm:gap-1.5 lg:gap-2">
                 {dayItems.length === 0 ? (
-                  <span className="text-[13px] text-ink-soft/60 sm:text-[14px]">일정 없음</span>
+                  <span className="text-[13px] text-ink-soft/60 sm:text-[14px] lg:text-[15px]">
+                    일정 없음
+                  </span>
                 ) : (
                   dayItems.map((it) => <WeekItemRow key={it.id} item={it} />)
                 )}
@@ -74,7 +76,7 @@ function WeekItemRow({ item }: { item: ScheduleItem }) {
   const style = TAG_STYLES[item.tag];
   return (
     <div
-      className={`flex items-center gap-1.5 truncate text-[13px] sm:text-[14px] ${
+      className={`flex items-center gap-1.5 truncate text-[13px] sm:text-[14px] lg:text-[15px] ${
         item.type === "todo" && item.done ? "text-ink-soft/50 line-through" : "text-ink"
       }`}
     >
