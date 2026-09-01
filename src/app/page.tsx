@@ -12,7 +12,7 @@ import { useEvents } from "@/hooks/useEvents";
 import { useAlarms } from "@/hooks/useAlarms";
 import { ScheduleItem, ViewMode } from "@/lib/types";
 import { addDays, addMonths, toDateKey } from "@/lib/dateUtils";
-import { unlockAlarmAudio } from "@/lib/alarms";
+import { unlockAlarmAudio } from "@/lib/alarm";
 
 
 export default function Home() {
