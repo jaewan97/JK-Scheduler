@@ -1,6 +1,7 @@
 "use client";
 import { Dispatch, SetStateAction } from "react";
-import { ViewMode, AlarmPermission } from "@/lib/types";
+import { ViewMode } from "@/lib/types";
+import { AlarmPermission } from "@/lib/alarm";
 import { formatMonthTitle } from "@/lib/dateUtils";
 import { SegmentedControl } from "./SegmentedControl";
 
