@@ -63,7 +63,8 @@ export async function requestNotificationPermission(): Promise<AlarmPermission> 
   if (!isNotificationSupported()) return "unsupported";
   try {
     return await Notification.requestPermission();
-  } catch {
+  } catch (err) {
+    alert("에러 발생: " + err);
     return Notification.permission;
   }
 }
