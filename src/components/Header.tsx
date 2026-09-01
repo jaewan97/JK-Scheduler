@@ -1,14 +1,13 @@
 "use client";
-import { Dispatch, SetStateAction } from "react";
-import { ViewMode } from "@/lib/types";
-import { AlarmPermission } from "@/lib/alarm";
+
 import { formatMonthTitle } from "@/lib/dateUtils";
+import { AlarmPermission } from "@/lib/alarms";
 import { SegmentedControl } from "./SegmentedControl";
 
 interface HeaderProps {
   anchor: Date;
-  view: ViewMode;
-  onViewChange: Dispatch<SetStateAction<ViewMode>>;
+  view: "month" | "week";
+  onViewChange: (v: "month" | "week") => void;
   onPrev: () => void;
   onNext: () => void;
   onToday: () => void;
@@ -28,7 +27,7 @@ export function Header({
 }: HeaderProps) {
   return (
     <header className="sticky top-0 z-30 bg-bg/80 backdrop-blur-xl">
-      <div className="mx-auto max-w-md px-5 pb-3 pt-6">
+      <div className="mx-auto w-full max-w-md px-5 pb-3 pt-6 sm:max-w-xl sm:px-8 md:max-w-2xl md:px-10 lg:max-w-3xl">
         <div className="flex items-center justify-between">
           <button
             onClick={onToday}
@@ -65,7 +64,7 @@ export function Header({
         <div className="mt-1 flex items-end justify-between">
           <div>
             <p className="text-[13px] font-semibold text-coral">JK하루</p>
-            <h1 className="font-sf text-[34px] font-bold leading-tight tracking-tight text-ink">
+            <h1 className="font-sf text-[34px] font-bold leading-tight tracking-tight text-ink sm:text-[40px] md:text-[44px]">
               {formatMonthTitle(anchor)}
             </h1>
           </div>
