@@ -33,7 +33,7 @@ export function AlarmToast({ item, onDismiss, onComplete }: AlarmToastProps) {
             className="flex min-w-0 flex-1 flex-col items-start text-left"
           >
             <span className="text-[11px] font-semibold text-ink-soft">
-              JK하루{item.time ? ` · ${formatTime12h(item.time)}` : ""}
+              알차게 보내자{item.time ? ` · ${formatTime12h(item.time)}` : ""}
             </span>
             <span className="truncate text-[15px] font-semibold text-ink">{item.title}</span>
           </button>
