@@ -25,4 +25,5 @@ export const TAG_LABELS: Record<TagKey, string> = {
   pink: "건강",
 };
 
-export const TAG_ORDER: TagKey[] = ["coral", "blue", "green", "purple", "yellow", "pink"];
+export const TAG_ORDER: TagKey[] = ["coral", "blue", "green", "purple", "yellow", "pink"]
+export type ViewMode = "month" | "week";
