@@ -28,7 +28,7 @@ export function BottomSheet({ open, onClose, children }: BottomSheetProps) {
         onClick={onClose}
         className="absolute inset-0 bg-black/30 backdrop-blur-[2px] animate-[fadeIn_0.25s_ease]"
       />
-      <div className="relative w-full max-w-md animate-sheet-up rounded-t-sheet bg-[#F9F9FB] pb-[max(1.25rem,env(safe-area-inset-bottom))] shadow-sheet">
+      <div className="relative w-full max-w-md animate-sheet-up rounded-t-sheet bg-[#F9F9FB] pb-[max(1.25rem,env(safe-area-inset-bottom))] shadow-sheet sm:max-w-xl md:max-w-2xl">
         <div className="flex justify-center pb-2 pt-2.5">
           <span className="h-1 w-9 rounded-full bg-black/15" />
         </div>
