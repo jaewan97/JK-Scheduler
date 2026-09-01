@@ -77,8 +77,7 @@ export default function Home() {
 
   async function handleRequestNotification() {
     unlockAlarmAudio();
-    const result = await requestPermission();
-    alert("최종 권한 상태: " + result);
+    await requestPermission();
   }
 
   const selectedKey = toDateKey(selectedDate);
