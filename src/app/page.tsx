@@ -1,20 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { MonthView } from "@/components/MonthView";
 import { WeekView } from "@/components/WeekView";
 import { DaySheet } from "@/components/DaySheet";
 import { EventForm } from "@/components/EventForm";
 import { Fab } from "@/components/Fab";
+import { AlarmToast } from "@/components/AlarmToast";
 import { useEvents } from "@/hooks/useEvents";
+import { useAlarms } from "@/hooks/useAlarms";
 import { ScheduleItem } from "@/lib/types";
 import { addDays, addMonths, toDateKey } from "@/lib/dateUtils";
+import { unlockAlarmAudio } from "@/lib/alarms";
 
 type ViewMode = "month" | "week";
 
 export default function Home() {
-  const { itemsByDate, addItem, updateItem, removeItem, toggleDone } = useEvents();
+  const { items, itemsByDate, addItem, updateItem, removeItem, toggleDone } = useEvents();
+  const { activeAlarm, dismissAlarm, permission, requestPermission } = useAlarms(items);
 
   const [view, setView] = useState<ViewMode>("month");
   const [anchor, setAnchor] = useState(() => new Date());
@@ -23,6 +27,17 @@ export default function Home() {
   const [daySheetOpen, setDaySheetOpen] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<ScheduleItem | null>(null);
+
+  // Unlock alarm audio on the very first tap anywhere, so iOS allows the
+  // automatic alarm sound to play later without needing another gesture.
+  useEffect(() => {
+    function unlockOnce() {
+      unlockAlarmAudio();
+      window.removeEventListener("pointerdown", unlockOnce);
+    }
+    window.addEventListener("pointerdown", unlockOnce);
+    return () => window.removeEventListener("pointerdown", unlockOnce);
+  }, []);
 
   function handlePrev() {
     setAnchor((a) => (view === "month" ? addMonths(a, -1) : addDays(a, -7)));
@@ -61,11 +76,18 @@ export default function Home() {
     }
   }
 
+  async function handleRequestNotification() {
+    unlockAlarmAudio();
+    await requestPermission();
+  }
+
   const selectedKey = toDateKey(selectedDate);
   const selectedDayItems = itemsByDate.get(selectedKey) ?? [];
 
   return (
     <main className="min-h-screen pb-28">
+      <AlarmToast item={activeAlarm} onDismiss={dismissAlarm} onComplete={toggleDone} />
+
       <Header
         anchor={anchor}
         view={view}
@@ -73,6 +95,8 @@ export default function Home() {
         onPrev={handlePrev}
         onNext={handleNext}
         onToday={handleToday}
+        notificationPermission={permission}
+        onRequestNotification={handleRequestNotification}
       />
 
       {view === "month" ? (
