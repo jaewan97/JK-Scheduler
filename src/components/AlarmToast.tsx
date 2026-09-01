@@ -23,7 +23,7 @@ export function AlarmToast({ item, onDismiss, onComplete }: AlarmToastProps) {
 
   return (
     <div className="fixed inset-x-0 top-0 z-[60] flex justify-center px-3 pt-3">
-      <div className="w-full max-w-md animate-[bannerDown_0.4s_cubic-bezier(0.34,1.56,0.64,1)] rounded-2xl bg-white/95 px-4 py-3 shadow-sheet backdrop-blur-xl">
+      <div className="w-full max-w-md animate-[bannerDown_0.4s_cubic-bezier(0.34,1.56,0.64,1)] rounded-2xl bg-white/95 px-4 py-3 shadow-sheet backdrop-blur-xl sm:max-w-xl md:max-w-2xl">
         <div className="flex items-start gap-3">
           <span
             className={`mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full ${style.dot} animate-pulse-ring`}
