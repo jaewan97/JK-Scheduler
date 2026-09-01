@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "JK하루",
+  title: "알차게 보내자",
   description: "iOS 감성의 개인용 캘린더 & 할 일 스케줄러",
 };
 
