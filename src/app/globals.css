@@ -11,6 +11,17 @@
   }
 }
 
+@keyframes bannerDown {
+  from {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 html,
 body {
   overscroll-behavior-y: contain;
