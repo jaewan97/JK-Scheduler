@@ -9,7 +9,7 @@ import {
   playAlarmSound,
   requestNotificationPermission,
   showBrowserNotification,
-} from "@/lib/alarms";
+} from "@/lib/alarm";
 
 const FIRED_KEY = "ios-scheduler:firedAlarms:v1";
 const CHECK_INTERVAL_MS = 15_000;
