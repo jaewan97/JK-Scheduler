@@ -76,15 +76,9 @@ export default function Home() {
   }
 
   async function handleRequestNotification() {
-    alert("클릭됨 1");
-    try {
     unlockAlarmAudio();
-      alert("오디오 언락 성공");
-    } catch (err) {
-      alert("오디오 에러: " + err);
-    }
-    await requestPermission();
-    alert("권한 요청 끝");
+    const result = await requestPermission();
+    alert("최종 권한 상태: " + result);
   }
 
   const selectedKey = toDateKey(selectedDate);
