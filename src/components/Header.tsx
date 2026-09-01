@@ -27,7 +27,7 @@ export function Header({
 }: HeaderProps) {
   return (
     <header className="sticky top-0 z-30 bg-bg/80 backdrop-blur-xl">
-      <div className="mx-auto w-full max-w-md px-5 pb-3 pt-6 sm:max-w-xl sm:px-8 md:max-w-2xl md:px-10 lg:max-w-3xl">
+      <div className="mx-auto w-full max-w-md px-5 pb-3 pt-6 sm:max-w-xl sm:px-8 md:max-w-2xl md:px-10 lg:max-w-3xl lg:px-12 xl:max-w-4xl xl:px-14">
         <div className="flex items-center justify-between">
           <button
             onClick={onToday}
@@ -64,7 +64,7 @@ export function Header({
         <div className="mt-1 flex items-end justify-between">
           <div>
             <p className="text-[13px] font-semibold text-coral">JK하루</p>
-            <h1 className="font-sf text-[34px] font-bold leading-tight tracking-tight text-ink sm:text-[40px] md:text-[44px]">
+            <h1 className="font-sf text-[34px] font-bold leading-tight tracking-tight text-ink sm:text-[40px] md:text-[44px] lg:text-[50px] xl:text-[56px]">
               {formatMonthTitle(anchor)}
             </h1>
           </div>
